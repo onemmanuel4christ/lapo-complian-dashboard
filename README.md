@@ -1,7 +1,7 @@
 # Welcome to your Lapo project
 
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone  https://github.com/onemmanuel4christ/lapo-complian-dashboard.git
 
 # Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
