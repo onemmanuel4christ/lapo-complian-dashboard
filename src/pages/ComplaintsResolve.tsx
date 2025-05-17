@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar, Filter, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ComplaintsSectionHeader from "@/components/complaints/ComplaintsSectionHeader";
 
 const sampleComplaints = Array(300)
   .fill(null)
@@ -55,6 +56,10 @@ const ComplaintsResolve = () => {
       description="View details of logged complaints and log new ones here."
     >
       <div className="space-y-6">
+        <ComplaintsSectionHeader
+          title="Complaints: Resolve"
+          description="View details of logged complaints and log new ones here."
+        />
         {/* Tabs */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <Tabs

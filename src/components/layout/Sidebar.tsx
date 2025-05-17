@@ -1,6 +1,7 @@
 import { cn } from "@/lib/utils";
 import {
   Home,
+  House,
   Users,
   CreditCard,
   Package,
@@ -14,7 +15,7 @@ import {
   CheckSquare,
   AlertCircle,
   AlignJustify,
-  ArrowLeftRight,
+  Building2,
   Gauge,
   LogOut,
   ChevronDown,
@@ -22,6 +23,8 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import AuthorizationListIcon from "../icons/AuthorizationListIcon";
+import BranchIcon from "../icons/BranchIcon";
 
 interface SidebarProps {
   collapsed: boolean;
@@ -29,9 +32,8 @@ interface SidebarProps {
 }
 
 const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
-  // Track which submenus are expanded
   const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({
-    complaints: true, // Default expanded for complaints
+    complaints: true,
   });
 
   // Toggle submenu expanded state
@@ -43,8 +45,8 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
   };
 
   const menuItems = [
-    { icon: Gauge, label: "Dashboard", path: "/" },
-    { icon: ArrowLeftRight, label: "Branches", path: "/branches" },
+    { icon: House, label: "Dashboard", path: "/" },
+    { icon: BranchIcon, label: "Branches", path: "/branches" },
     { icon: Users, label: "Roles", path: "/roles" },
     { icon: Users, label: "Users", path: "/users" },
     { icon: CreditCard, label: "Card Scheme", path: "/card-scheme" },
@@ -73,7 +75,11 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
         },
       ],
     },
-    { icon: List, label: "Authorization List", path: "/auth-list" },
+    {
+      icon: AuthorizationListIcon,
+      label: "Authorization List",
+      path: "/auth-list",
+    },
     { icon: AlertCircle, label: "Authorization Queue", path: "/auth-queue" },
     { icon: FileWarning, label: "Trail", path: "/trail" },
     { icon: Users, label: "Account", path: "/account" },
@@ -82,7 +88,7 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
   return (
     <aside
       className={cn(
-        "bg-blue-950 text-white h-screen transition-all duration-300 flex flex-col",
+        "fixed top-0 left-0 h-screen bg-blue-950 text-white transition-all duration-300 flex flex-col",
         collapsed ? "w-16" : "w-60"
       )}
     >
@@ -94,10 +100,17 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
           )}
         >
           {!collapsed && (
-            <span className="text-xl font-bold text-orange-500">LAPO</span>
+            <span className="text-xl font-bold text-orange-500 w-[138px]">
+              <img src="/infra.png" alt="infra-logo" className="w-[100%]" />
+            </span>
           )}
           {collapsed && (
-            <span className="text-xl font-bold text-orange-500">L</span>
+            <span
+              className="text-xl font-bold text-orange-500 cursor-pointer"
+              onClick={() => setCollapsed(!collapsed)}
+            >
+              <Home />
+            </span>
           )}
         </div>
         <button
@@ -111,7 +124,7 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
         </button>
       </div>
 
-      <div className="mt-2 flex-1 overflow-y-auto">
+      <div className="mt-2 flex-1 overflow-y-auto custom-scrollbar">
         {/* Main Menu Section Label */}
         <div className="px-4 pt-2 pb-1">
           <span className="uppercase text-xs text-white/40 tracking-wider mb-2 block">
@@ -143,41 +156,38 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
                 </button>
 
                 {/* Submenu items */}
-                <div
-                  className={cn(
-                    "flex flex-col gap-1",
-                    !collapsed && "pl-8",
-                    collapsed && "items-center"
-                  )}
-                >
-                  {item.subItems.map((subItem, subIndex) => {
-                    const isActive = window.location.pathname === subItem.path;
-                    return (
-                      <Link
-                        key={`${index}-${subIndex}`}
-                        to={subItem.path}
-                        className={cn(
-                          "flex items-center py-2 px-4 transition-colors rounded-lg",
-                          isActive
-                            ? "bg-white text-[#014DAF] font-semibold"
-                            : "text-white/70 hover:bg-blue-900 hover:text-white",
-                          collapsed ? "justify-center" : ""
-                        )}
-                      >
-                        <subItem.icon
-                          size={18}
+                {expandedMenus[item.key] && !collapsed && (
+                  <div className={cn("flex flex-col gap-1 pl-8")}>
+                    {item.subItems.map((subItem, subIndex) => {
+                      const isActive =
+                        window.location.pathname === subItem.path;
+                      return (
+                        <Link
+                          key={`${index}-${subIndex}`}
+                          to={subItem.path}
                           className={cn(
-                            "min-w-5",
-                            isActive ? "text-[#014DAF]" : "text-inherit"
+                            "flex items-center py-2 px-4 transition-colors rounded-lg",
+                            isActive
+                              ? "bg-white text-[#014DAF] font-semibold"
+                              : "text-white/70 hover:bg-blue-900 hover:text-white",
+                            collapsed ? "justify-center" : ""
                           )}
-                        />
-                        {!collapsed && (
-                          <span className="ml-3">{subItem.label}</span>
-                        )}
-                      </Link>
-                    );
-                  })}
-                </div>
+                        >
+                          <subItem.icon
+                            size={18}
+                            className={cn(
+                              "min-w-5",
+                              isActive ? "text-[#014DAF]" : "text-inherit"
+                            )}
+                          />
+                          {!collapsed && (
+                            <span className="ml-3">{subItem.label}</span>
+                          )}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
               </div>
             ) : (
               // Render regular menu item
@@ -208,7 +218,7 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
         </nav>
       </div>
 
-      <div className="p-4 border-t border-blue-900">
+      <div className="py-4">
         <Link
           to="/logout"
           className={cn(
@@ -223,12 +233,12 @@ const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
 
       <div
         className={cn(
-          "p-2 text-xs text-white/30 text-center",
+          "p-2 text-xs text-white/30 text-start",
           collapsed && "hidden"
         )}
       >
-        <p>POWERED BY</p>
-        <p className="font-bold">cardinfra</p>
+        <p className="my-4 ml-1">POWERED BY</p>
+        <img src="/cardinfra.png" alt="card-infra-logo" className="w-[93px]" />
       </div>
     </aside>
   );

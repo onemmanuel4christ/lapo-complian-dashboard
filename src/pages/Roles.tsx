@@ -33,7 +33,7 @@ const Roles = () => {
               <Search className="h-5 w-5" />
             </span>
             <Input
-              placeholder="Search role @olivia"
+              placeholder="Search role "
               className="pl-10 pr-4 py-2 rounded-lg border border-gray-200 bg-white focus:ring-2 focus:ring-blue-100"
             />
           </div>

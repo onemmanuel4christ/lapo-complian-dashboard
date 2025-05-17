@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 import { Button } from "@/components/ui/button";
+import ComplaintsSectionHeader from "@/components/complaints/ComplaintsSectionHeader";
 
 const mockComplaint = {
   category: "Card Dispute",
@@ -25,6 +26,10 @@ const ComplaintDetail = () => {
       title="Complaints: Resolve"
       description="View details of treated complaints and resolve pending ones here."
     >
+        <ComplaintsSectionHeader
+          title="Complaints: Resolve"
+          description="View details of logged complaints and log new ones here."
+        />
       <div className="mt-6">
         <div className="bg-white rounded-xl border border-gray-200 p-6 w-full">
           <h2 className="text-lg font-semibold mb-6 border-b pb-2">

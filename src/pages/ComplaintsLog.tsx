@@ -4,6 +4,7 @@ import ComplaintsFilters from "@/components/complaints/ComplaintsFilters";
 import ComplaintsTable from "@/components/complaints/ComplaintsTable";
 
 import { Dialog, DialogContent } from "@/components/ui/dialog";
+import ComplaintsSectionHeader from "@/components/complaints/ComplaintsSectionHeader";
 
 // Sample data
 const sampleComplaints = Array(45)
@@ -55,6 +56,10 @@ const ComplaintsLog = () => {
       description="View details of logged complaints and log new ones here."
     >
       <div className="space-y-6">
+        <ComplaintsSectionHeader
+          title="Complaints: Log"
+          description="View details of logged complaints and log new ones here."
+        />
         <ComplaintsFilters
           onTabChange={setActiveTab}
           onSearch={handleSearch}
