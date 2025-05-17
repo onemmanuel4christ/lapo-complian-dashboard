@@ -24,7 +24,6 @@ const ComplaintDetail = () => {
   return (
     <DashboardLayout
       title="Complaints: Resolve"
-      description="View details of treated complaints and resolve pending ones here."
     >
         <ComplaintsSectionHeader
           title="Complaints: Resolve"

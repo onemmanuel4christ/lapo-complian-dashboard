@@ -81,7 +81,7 @@ const Users = () => {
   };
 
   return (
-    <DashboardLayout title="Users" description="Manage system users">
+    <DashboardLayout title="Users" >
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div className="max-w-sm">
@@ -97,7 +97,6 @@ const Users = () => {
 
         <div className="rounded-md border">
           <Table>
-            <TableCaption>A list of all system users</TableCaption>
             <TableHeader>
               <TableRow>
                 <TableHead>Name</TableHead>

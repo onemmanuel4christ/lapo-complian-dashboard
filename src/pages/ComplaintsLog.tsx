@@ -53,7 +53,6 @@ const ComplaintsLog = () => {
   return (
     <DashboardLayout
       title="Complaints: Log"
-      description="View details of logged complaints and log new ones here."
     >
       <div className="space-y-6">
         <ComplaintsSectionHeader

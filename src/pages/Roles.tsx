@@ -24,7 +24,6 @@ const Roles = () => {
   return (
     <DashboardLayout
       title="Roles"
-      description="Manage your roles, create roles, view roles and edit roles. Select privileges and set account permissions here."
     >
       <div className="space-y-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">

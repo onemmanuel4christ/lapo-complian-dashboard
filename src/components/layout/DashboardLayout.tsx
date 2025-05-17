@@ -7,13 +7,13 @@ import { cn } from "@/lib/utils";
 interface DashboardLayoutProps {
   children: React.ReactNode;
   title: string;
-  description?: string;
+  // description?: string;
 }
 
 const DashboardLayout = ({
   children,
   title,
-  description,
+  // description,
 }: DashboardLayoutProps) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
@@ -40,7 +40,7 @@ const DashboardLayout = ({
           </button>
         </div>
 
-        <Header title={title} description={description} />
+        <Header title={title}  />
 
         <main className="flex-1 overflow-y-auto p-6">{children}</main>
       </div>
