@@ -23,7 +23,6 @@ import {
   ChartLegendContent,
 } from "@/components/ui/chart";
 
-// Import icons (assuming lucide-react is installed)
 import { ChevronRight } from "lucide-react";
 
 const Index = () => {
