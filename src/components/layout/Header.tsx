@@ -3,10 +3,9 @@ import { Button } from "@/components/ui/button";
 
 interface HeaderProps {
   title: string;
-  description?: string;
 }
-
-const Header = ({ title, description }: HeaderProps) => {
+ 
+const Header = ({ title }: HeaderProps) => {
   return (
     <header className="bg-white rounded-md px-6 py-2 flex items-center justify-between shadow-md">
       <div className="flex items-center gap-2">

@@ -33,7 +33,7 @@ interface SidebarProps {
 
 const Sidebar = ({ collapsed, setCollapsed }: SidebarProps) => {
   const [expandedMenus, setExpandedMenus] = useState<Record<string, boolean>>({
-    complaints: true,
+    complaints: false,
   });
 
   // Toggle submenu expanded state

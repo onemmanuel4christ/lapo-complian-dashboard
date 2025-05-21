@@ -7,13 +7,11 @@ import { cn } from "@/lib/utils";
 interface DashboardLayoutProps {
   children: React.ReactNode;
   title: string;
-  // description?: string;
 }
 
 const DashboardLayout = ({
   children,
   title,
-  // description,
 }: DashboardLayoutProps) => {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
