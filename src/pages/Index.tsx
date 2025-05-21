@@ -23,7 +23,14 @@ import {
   ChartLegendContent,
 } from "@/components/ui/chart";
 
-import { ChevronRight } from "lucide-react";
+// Import icons (assuming lucide-react is installed)
+import {
+  ChevronRight,
+  CreditCard,
+  PencilLine,
+  Banknote,
+  Hourglass,
+} from "lucide-react";
 
 const Index = () => {
   // Dummy data for Monthly Issuance Chart (adjusted to match design proportions)
@@ -84,8 +91,8 @@ const Index = () => {
 
   // Chart configuration based on design - primarily for labels used by shadcn helpers
   const chartConfig = {
-    Personalized: { label: "Personalized", color: "#0D47A1" },
-    Instant: { label: "Instant", color: "#90CAF9" },
+    Personalized: { label: "Personalized", color: "#0D47A1" }, // Darker blue from design
+    Instant: { label: "Instant", color: "#90CAF9" }, // Lighter blue from design
     income: { label: "Income", color: "#4BC0C0" },
     Active: { label: "Active", color: COLORS[0] },
     Expired: { label: "Expired", color: COLORS[1] },
@@ -124,26 +131,46 @@ const Index = () => {
       <div className="mb-5">
         <h5>Analytics</h5>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {/* Placeholder Analytics Cards */}
-          <div className="border border-gray-300 p-5 rounded-md">
-            <h6>Total Active Cards</h6>
-            <p className="text-2xl font-bold">26,478</p>
-            <p className="text-green-600">+9% this month</p>
+          {/* Analytics Cards */}
+          <div className="border border-gray-300 p-5 rounded-md flex flex-col">
+            <div className="flex items-center mb-2">
+              <CreditCard className="h-5 w-5 text-green-600 mr-2" />
+              <h6 className="text-sm text-gray-600">Total Active Cards</h6>
+            </div>
+            <div className="flex items-end justify-between">
+              <p className="text-2xl font-bold">26,478</p>
+              <p className="text-green-600 text-xs">+9% this month</p>
+            </div>
           </div>
-          <div className="border border-gray-300 p-5 rounded-md">
-            <h6>Total Personalized Cards</h6>
-            <p className="text-2xl font-bold">15,703</p>
-            <p className="text-green-600">+8.5% this month</p>
+          <div className="border border-gray-300 p-5 rounded-md flex flex-col">
+            <div className="flex items-center mb-2">
+              <PencilLine className="h-5 w-5 text-purple-600 mr-2" />
+              <h6 className="text-sm text-gray-600">
+                Total Personalized Cards
+              </h6>
+            </div>
+            <div className="flex items-end justify-between">
+              <p className="text-2xl font-bold">15,703</p>
+              <p className="text-green-600 text-xs">+8.5% this month</p>
+            </div>
           </div>
-          <div className="border border-gray-300 p-5 rounded-md">
-            <h6>Today's Revenue</h6>
-            <p className="text-2xl font-bold">₦9.3M</p>
-            <p className="text-green-600">+6% vs yesterday</p>
+          <div className="border border-gray-300 p-5 rounded-md flex flex-col">
+            <div className="flex items-center mb-2">
+              <Banknote className="h-5 w-5 text-blue-600 mr-2" />
+              <h6 className="text-sm text-gray-600">Today's Revenue</h6>
+            </div>
+            <div className="flex items-end justify-between">
+              <p className="text-2xl font-bold">₦9.3M</p>
+              <p className="text-gray-500 text-xs">+6% vs yesterday</p>
+            </div>
           </div>
           <div className="border border-gray-300 p-5 rounded-md flex flex-col justify-between">
-            <h6>Pending Requests</h6>
+            <div className="flex items-center mb-2">
+              <Hourglass className="h-5 w-5 text-orange-500 mr-2" />
+              <h6 className="text-sm text-gray-600">Pending Requests</h6>
+            </div>
             <p className="text-2xl font-bold">38</p>
-            <p className="text-orange-500">Requires attention</p>
+            <p className="text-orange-500 text-xs">Requires attention</p>
           </div>
         </div>
       </div>
